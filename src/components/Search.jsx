@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { BeerContext } from "../Context";
 
 export const Search = (props) => {
+  // eslint-disable-next-line no-unused-vars
   const [beer, setBeer] = useContext(BeerContext);
   const [search, setSearch] = useState("");
 
@@ -24,6 +25,7 @@ export const Search = (props) => {
 
   return (
     <div>
+      <h2>Beer api</h2>
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
           <Button variant="outline-secondary" onClick={() => fetchBeer(search)}>
@@ -35,7 +37,6 @@ export const Search = (props) => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </InputGroup>
-      <h4>Beer api</h4>
     </div>
   );
 };
