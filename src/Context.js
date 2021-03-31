@@ -4,8 +4,12 @@ export const BeerContext = createContext();
 
 export const BeerProvider = (props) => {
   const [beer, setBeer] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
 
   return (
-    <BeerContext.Provider value={[beer, setBeer]}>{props.children}</BeerContext.Provider>
+    <BeerContext.Provider
+      value={{ value1: [beer, setBeer], value2: [wishlist, setWishlist] }}>
+      {props.children}
+    </BeerContext.Provider>
   );
 };

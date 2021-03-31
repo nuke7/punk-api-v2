@@ -5,28 +5,39 @@ import Zoom from "react-reveal/Zoom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-export const Grid = (props) => {
+export const WishList = (props) => {
   // eslint-disable-next-line no-unused-vars
   const { value1, value2 } = useContext(BeerContext);
   const [beer, setBeer] = value1;
   const [wishList, setWishList] = value2;
   const [stateId, setStateId] = useState(0);
   const [modalShow, setModalShow] = useState(false);
+  const [localList, setLocalList] = useState([]);
 
-  const addToWishlist = () => {
-    localStorage.setItem("wishes", JSON.stringify(wishList));
+  const loadFromLocalStorage = () => {
+    const data = localStorage.getItem("wishes");
+    if (data === null || data.length === 0) {
+      return [];
+    } else {
+      return JSON.parse(data);
+    }
   };
 
   useEffect(() => {
-    addToWishlist();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [wishList]);
+    setLocalList(loadFromLocalStorage());
+  }, []);
 
   return (
     <div>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly" }}>
-        {beer.length !== 0
-          ? beer.map((beer, index) => {
+      <div
+        style={{
+          marginTop: "4rem",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-evenly",
+        }}>
+        {localList.length !== 0
+          ? localList.map((beer, index) => {
               return (
                 <Zoom>
                   <Card
@@ -53,22 +64,11 @@ export const Grid = (props) => {
                         id={index}
                         onClick={(e) => {
                           setStateId(e.currentTarget.id);
-
                           console.log(stateId);
                           setModalShow(true);
                         }}
                         variant="outline-secondary">
                         Show More
-                      </Button>
-                      <Button
-                        disabled={wishList.includes(beer)}
-                        style={{ display: "block", margin: "1rem auto" }}
-                        onClick={() => {
-                          setWishList((prevState) => [...prevState, beer]);
-                          console.log(wishList);
-                        }}
-                        variant="outline-info">
-                        Add to Wishlist
                       </Button>
                     </Card.Body>
                     <Card.Footer className="text-muted">

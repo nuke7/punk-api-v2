@@ -5,7 +5,9 @@ import { BeerContext } from "../Context";
 
 export function MyVerticallyCenteredModal(props) {
   // eslint-disable-next-line no-unused-vars
-  const [beer, setBeer] = useContext(BeerContext);
+  const { value1, value2 } = useContext(BeerContext);
+  const [beer, setBeer] = value1;
+  /* const [wishList, setWishList] = value2; */
   return (
     <div>
       {beer[props.id] && (

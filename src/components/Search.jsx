@@ -6,7 +6,9 @@ import { BeerContext } from "../Context";
 
 export const Search = (props) => {
   // eslint-disable-next-line no-unused-vars
-  const [beer, setBeer] = useContext(BeerContext);
+  const { value1, value2 } = useContext(BeerContext);
+  const [beer, setBeer] = value1;
+  /*  const [wishList, setWishList] = value2; */
   const [search, setSearch] = useState("");
 
   const fetchBeer = async (search) => {
@@ -24,8 +26,8 @@ export const Search = (props) => {
   };
 
   return (
-    <div>
-      <h2>Beer api</h2>
+    <div style={{ margin: "4rem 2rem" }}>
+      <h2>Search for Beers</h2>
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
           <Button variant="outline-secondary" onClick={() => fetchBeer(search)}>
