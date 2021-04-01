@@ -12,6 +12,7 @@ export const Grid = (props) => {
   const [wishList, setWishList] = value2;
   const [stateId, setStateId] = useState(0);
   const [modalShow, setModalShow] = useState(false);
+  const [item, setItem] = useState();
 
   const addToWishlist = () => {
     localStorage.setItem("wishes", JSON.stringify(wishList));
@@ -20,7 +21,7 @@ export const Grid = (props) => {
   useEffect(() => {
     addToWishlist();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [wishList]);
+  }, [item]);
 
   return (
     <div>
@@ -64,6 +65,7 @@ export const Grid = (props) => {
                         disabled={wishList.includes(beer)}
                         style={{ display: "block", margin: "1rem auto" }}
                         onClick={() => {
+                          setItem(beer);
                           setWishList((prevState) => [...prevState, beer]);
                           console.log(wishList);
                         }}

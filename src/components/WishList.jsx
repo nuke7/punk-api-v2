@@ -13,6 +13,7 @@ export const WishList = (props) => {
   const [stateId, setStateId] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [localList, setLocalList] = useState([]);
+  const [isWish, setIsWish] = useState(true);
 
   const loadFromLocalStorage = () => {
     const data = localStorage.getItem("wishes");
@@ -81,6 +82,7 @@ export const WishList = (props) => {
           : "No such beer"}
       </div>
       <MyVerticallyCenteredModal
+        isWish={isWish}
         id={stateId}
         show={modalShow}
         onHide={() => setModalShow(false)}
