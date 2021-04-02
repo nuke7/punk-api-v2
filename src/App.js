@@ -7,6 +7,7 @@ import { Grid } from "./components/Grid";
 import { WishList } from "./components/WishList";
 import { HashRouter, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
+import { Home } from "./components/Home";
 
 function App() {
   return (
@@ -18,15 +19,9 @@ function App() {
             <Search />
             <Grid />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <NavBar />
-            <h2 style={{ margin: "4rem auto" }}>
-              Welcome to the craft-beer searching app!
-            </h2>
-            <h4 style={{ margin: "2rem 2rem" }}>
-              On the search tab, you can search for craft beers by name, and you can add
-              any you like to your wish list. Happy searching! :)
-            </h4>
+            <Home />
           </Route>
           <Route path="/wishlist">
             <NavBar />
