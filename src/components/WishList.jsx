@@ -51,7 +51,7 @@ export const WishList = (props) => {
                       height: "95%",
                     }}>
                     <Card.Header>
-                      <h5>{beer.name}</h5>
+                      <h4>{beer.name}</h4>
                     </Card.Header>
                     <Card.Body
                       style={{

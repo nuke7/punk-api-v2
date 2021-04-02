@@ -15,7 +15,7 @@ export const Grid = () => {
   const [search, setSearch] = value3;
   const [stateId, setStateId] = useState(0);
   const [modalShow, setModalShow] = useState(false);
-  const [item, setItem] = useState();
+  const [item, setItem] = useState({});
 
   const addToWishlist = () => {
     localStorage.setItem("wishes", JSON.stringify(wishList));
@@ -50,7 +50,7 @@ export const Grid = () => {
                       height: "95%",
                     }}>
                     <Card.Header>
-                      <h5>{beer.name}</h5>
+                      <h4>{beer.name}</h4>
                     </Card.Header>
                     <Card.Body
                       style={{
@@ -84,7 +84,10 @@ export const Grid = () => {
                         Show More
                       </Button>
                       <Button
-                        disabled={wishList.includes(beer)}
+                        disabled={
+                          wishList.length !== 0 &&
+                          wishList.some((item) => item.id === beer.id)
+                        }
                         style={{ display: "block", margin: "1rem auto" }}
                         onClick={() => {
                           setItem(beer);

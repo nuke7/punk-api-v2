@@ -5,28 +5,28 @@ import { BeerProvider } from "./Context";
 import { Search } from "./components/Search";
 import { Grid } from "./components/Grid";
 import { WishList } from "./components/WishList";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 
 function App() {
   return (
     <BeerProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="App">
-          <Route exact path="/search">
+          <Route path="/search">
             <NavBar />
             <Search />
             <Grid />
           </Route>
-          <Route exact path="/">
+          <Route path="/">
             <NavBar />
           </Route>
-          <Route exact path="/wishlist">
+          <Route path="/wishlist">
             <NavBar />
             <WishList />
           </Route>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </BeerProvider>
   );
 }

@@ -1,7 +1,7 @@
 {
   "name": "punk-apiv2",
   "version": "0.1.0",
-  "homepage": "./",
+  "homepage": "https://nuke7.github.io/firstShared/beer-context",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",

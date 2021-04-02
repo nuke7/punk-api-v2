@@ -3,8 +3,16 @@ import React, { useState, createContext } from "react";
 export const BeerContext = createContext();
 
 export const BeerProvider = (props) => {
+  const loadFromLocalStorage = () => {
+    const data = localStorage.getItem("wishes");
+    if (data === null || data.length === 0) {
+      return [];
+    } else {
+      return JSON.parse(data);
+    }
+  };
   const [beer, setBeer] = useState([]);
-  const [wishlist, setWishlist] = useState(JSON.parse(localStorage.getItem("wishes")));
+  const [wishlist, setWishlist] = useState(loadFromLocalStorage());
   const [search, setSearch] = useState("");
 
   return (
