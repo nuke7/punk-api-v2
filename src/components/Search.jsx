@@ -28,7 +28,7 @@ export const Search = (props) => {
 
   return (
     <div style={{ margin: "4rem 2rem" }}>
-      <h2>Search for Beers</h2>
+      <h2 style={{ margin: "1rem auto" }}>Search for Craft Beers by name</h2>
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
           <Button variant="outline-secondary" onClick={() => fetchBeer(search)}>
