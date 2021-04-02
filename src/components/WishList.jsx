@@ -8,12 +8,12 @@ import Button from "react-bootstrap/Button";
 export const WishList = (props) => {
   // eslint-disable-next-line no-unused-vars
   const { value1, value2 } = useContext(BeerContext);
-  const [beer, setBeer] = value1;
-  const [wishList, setWishList] = value2;
+  /*   const [beer, setBeer] = value1;
+  const [wishList, setWishList] = value2; */
   const [stateId, setStateId] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [localList, setLocalList] = useState([]);
-  const [isWish, setIsWish] = useState(true);
+  // eslint-disable-next-line no-unused-vars
 
   const loadFromLocalStorage = () => {
     const data = localStorage.getItem("wishes");
@@ -40,15 +40,26 @@ export const WishList = (props) => {
         {localList.length !== 0
           ? localList.map((beer, index) => {
               return (
-                <Zoom>
+                <Zoom key={beer.id}>
                   <Card
-                    key={beer.id}
                     className="text-center"
-                    style={{ width: "18rem", minWidth: "240px", margin: "0.5rem" }}>
+                    style={{
+                      width: "18rem",
+                      minWidth: "240px",
+                      margin: "0.5rem",
+                      alignSelf: "stretch",
+                      height: "95%",
+                    }}>
                     <Card.Header>
                       <h5>{beer.name}</h5>
                     </Card.Header>
-                    <Card.Body>
+                    <Card.Body
+                      style={{
+                        display: "flex",
+                        /* flexWrap: "wrap", */
+                        flexDirection: "column",
+                        justifyContent: "end",
+                      }}>
                       <Card.Title>{beer.tagline}</Card.Title>
                       <Card.Text>
                         <img
@@ -79,10 +90,10 @@ export const WishList = (props) => {
                 </Zoom>
               );
             })
-          : "No such beer"}
+          : "No such beer, yet"}
       </div>
       <MyVerticallyCenteredModal
-        isWish={isWish}
+        iswish={true}
         id={stateId}
         show={modalShow}
         onHide={() => setModalShow(false)}

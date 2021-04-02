@@ -5,11 +5,14 @@ import Zoom from "react-reveal/Zoom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-export const Grid = (props) => {
+export const Grid = () => {
   // eslint-disable-next-line no-unused-vars
-  const { value1, value2 } = useContext(BeerContext);
+  const { value1, value2, value3 } = useContext(BeerContext);
+  // eslint-disable-next-line no-unused-vars
   const [beer, setBeer] = value1;
   const [wishList, setWishList] = value2;
+  // eslint-disable-next-line no-unused-vars
+  const [search, setSearch] = value3;
   const [stateId, setStateId] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [item, setItem] = useState();
@@ -25,19 +28,37 @@ export const Grid = (props) => {
 
   return (
     <div>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly" }}>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-evenly",
+          alignItems: "stretch",
+          alignContent: "stretch",
+        }}>
         {beer.length !== 0
           ? beer.map((beer, index) => {
               return (
-                <Zoom>
+                <Zoom key={beer.id}>
                   <Card
-                    key={beer.id}
                     className="text-center"
-                    style={{ width: "18rem", minWidth: "240px", margin: "0.5rem" }}>
+                    style={{
+                      width: "18rem",
+                      minWidth: "240px",
+                      margin: "0.5rem",
+
+                      height: "95%",
+                    }}>
                     <Card.Header>
                       <h5>{beer.name}</h5>
                     </Card.Header>
-                    <Card.Body>
+                    <Card.Body
+                      style={{
+                        display: "flex",
+                        /* flexWrap: "wrap", */
+                        flexDirection: "column",
+                        justifyContent: "end",
+                      }}>
                       <Card.Title>{beer.tagline}</Card.Title>
                       <Card.Text>
                         <img
@@ -52,6 +73,7 @@ export const Grid = (props) => {
                       </Card.Text>
                       <Button
                         id={index}
+                        style={{ display: "block", margin: "1rem auto" }}
                         onClick={(e) => {
                           setStateId(e.currentTarget.id);
 
@@ -80,7 +102,9 @@ export const Grid = (props) => {
                 </Zoom>
               );
             })
-          : "No such beer"}
+          : search.length !== 0
+          ? "No such beer, yet"
+          : "search for something first..."}
       </div>
       <MyVerticallyCenteredModal
         id={stateId}

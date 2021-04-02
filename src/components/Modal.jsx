@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useContext } from "react";
@@ -10,7 +11,7 @@ export function MyVerticallyCenteredModal(props) {
   const [wishList, setWishList] = value2;
   return (
     <div>
-      {!props.isWish && beer[props.id] ? (
+      {!props.iswish && beer[props.id] ? (
         <Modal
           {...props}
           size="lg"

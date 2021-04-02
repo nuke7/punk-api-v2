@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
@@ -6,10 +6,11 @@ import { BeerContext } from "../Context";
 
 export const Search = (props) => {
   // eslint-disable-next-line no-unused-vars
-  const { value1, value2 } = useContext(BeerContext);
+  const { value1, value2, value3 } = useContext(BeerContext);
+  // eslint-disable-next-line no-unused-vars
   const [beer, setBeer] = value1;
   /*  const [wishList, setWishList] = value2; */
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = value3;
 
   const fetchBeer = async (search) => {
     const response = await fetch(
