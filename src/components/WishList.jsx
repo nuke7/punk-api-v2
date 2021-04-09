@@ -73,6 +73,7 @@ export const WishList = (props) => {
                         />
                       </Card.Text>
                       <Button
+                        style={{ margin: "1rem auto", minWidth: "180px" }}
                         id={index}
                         onClick={(e) => {
                           setStateId(e.currentTarget.id);
@@ -81,6 +82,17 @@ export const WishList = (props) => {
                         }}
                         variant="outline-secondary">
                         Show More
+                      </Button>
+                      <Button
+                        style={{ margin: "1rem auto", minWidth: "180px" }}
+                        id={index}
+                        onClick={(e) => {
+                          setStateId(e.currentTarget.id);
+                          console.log(stateId);
+                          setModalShow(true);
+                        }}
+                        variant="outline-danger">
+                        Remove from Wishlist
                       </Button>
                     </Card.Body>
                     <Card.Footer className="text-muted">

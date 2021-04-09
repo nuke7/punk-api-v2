@@ -73,7 +73,11 @@ export const Grid = () => {
                       </Card.Text>
                       <Button
                         id={index}
-                        style={{ display: "block", margin: "1rem auto" }}
+                        style={{
+                          display: "block",
+                          margin: "1rem auto",
+                          minWidth: "180px",
+                        }}
                         onClick={(e) => {
                           setStateId(e.currentTarget.id);
 
@@ -88,7 +92,11 @@ export const Grid = () => {
                           wishList.length !== 0 &&
                           wishList.some((item) => item.id === beer.id)
                         }
-                        style={{ display: "block", margin: "1rem auto" }}
+                        style={{
+                          display: "block",
+                          margin: "1rem auto",
+                          minWidth: "180px",
+                        }}
                         onClick={() => {
                           setItem(beer);
                           setWishList((prevState) => [...prevState, beer]);

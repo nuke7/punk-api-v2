@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import React from "react";
+import { HashRouter, Route } from "react-router-dom";
 import { BeerProvider } from "./Context";
 import { Search } from "./components/Search";
 import { Grid } from "./components/Grid";
 import { WishList } from "./components/WishList";
-import { HashRouter, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { Home } from "./components/Home";
 
