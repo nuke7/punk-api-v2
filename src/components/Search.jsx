@@ -38,6 +38,11 @@ export const Search = (props) => {
         <FormControl
           aria-describedby="basic-addon1"
           onChange={(e) => setSearch(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              fetchBeer(search);
+            }
+          }}
         />
       </InputGroup>
     </div>
