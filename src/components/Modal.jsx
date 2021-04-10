@@ -34,6 +34,17 @@ export function MyVerticallyCenteredModal(props) {
               style={{ width: "auto", margin: "auto", maxHeight: "20vh" }}
             />
             <p>{beer[props.id] ? beer[props.id].description : ""}</p>
+            <h5>Goes well with:</h5>
+            {beer[props.id]
+              ? beer[props.id].food_pairing.map((food, index) => {
+                  return <p key={index}>{food}</p>;
+                })
+              : ""}
+            <p>{beer[props.id] ? <em>ABV: {beer[props.id].abv} </em> : ""}</p>
+            <p>{beer[props.id] ? <em>IBU: {beer[props.id].ibu} </em> : ""}</p>
+            <p>{beer[props.id] ? <em>PH: {beer[props.id].ph} </em> : ""}</p>
+            <h5>Brewers' tips:</h5>
+            <p>{beer[props.id] ? beer[props.id].brewers_tips : ""}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={props.onHide} variant="outline-secondary">
@@ -65,6 +76,17 @@ export function MyVerticallyCenteredModal(props) {
                 style={{ width: "auto", margin: "auto", maxHeight: "20vh" }}
               />
               <p>{wishList[props.id] ? wishList[props.id].description : ""}</p>
+              <h5>Goes well with:</h5>
+              {wishList[props.id]
+                ? wishList[props.id].food_pairing.map((food, index) => {
+                    return <p key={index}>{food}</p>;
+                  })
+                : ""}
+              <p>{wishList[props.id] ? <em>ABV: {wishList[props.id].abv} </em> : ""}</p>
+              <p>{wishList[props.id] ? <em>IBU: {wishList[props.id].ibu} </em> : ""}</p>
+              <p>{wishList[props.id] ? <em>PH: {wishList[props.id].ph} </em> : ""}</p>
+              <h5>Brewers' tips:</h5>
+              <p>{wishList[props.id] ? wishList[props.id].brewers_tips : ""}</p>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={props.onHide} variant="outline-secondary">

@@ -8,8 +8,8 @@ import Button from "react-bootstrap/Button";
 export const WishList = (props) => {
   // eslint-disable-next-line no-unused-vars
   const { value1, value2 } = useContext(BeerContext);
-  /*   const [beer, setBeer] = value1;
-  const [wishList, setWishList] = value2; */
+  /*   const [beer, setBeer] = value1; */
+  const [wishList, setWishList] = value2;
   const [stateId, setStateId] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [localList, setLocalList] = useState([]);
@@ -26,7 +26,7 @@ export const WishList = (props) => {
 
   useEffect(() => {
     setLocalList(loadFromLocalStorage());
-  }, []);
+  }, [wishList]);
 
   return (
     <div>
@@ -87,9 +87,19 @@ export const WishList = (props) => {
                         style={{ margin: "1rem auto", minWidth: "180px" }}
                         id={index}
                         onClick={(e) => {
-                          setStateId(e.currentTarget.id);
-                          console.log(stateId);
-                          setModalShow(true);
+                          localStorage.setItem(
+                            "wishes",
+                            JSON.stringify(
+                              wishList.filter((val) => {
+                                return val.id !== wishList[e.currentTarget.id].id;
+                              })
+                            )
+                          );
+                          setWishList(() =>
+                            wishList.filter((val) => {
+                              return val.id !== wishList[e.currentTarget.id].id;
+                            })
+                          );
                         }}
                         variant="outline-danger">
                         Remove from Wishlist
